@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>How to fetch</title>
+</head>
+<body>
+    <h2>Nikhil Reddy Pannala computes</h2>
+    <input type="number" id="input1">
+    <input type="number" id="input2">
+    <button onclick="buttonHandler()">Remote compute</button>
+    <div id="result" style="margin: 10px 0;">Result will be displayed here</div>
+</body>
+<script>
+    function buttonHandler(){
+        i1 = document.getElementById("input1").value
+        i2 = document.getElementById("input2").value
+        fetch(`http://127.0.0.1:3001/?x=${i1}&y=${i2}`).then(
+            resp => {
+                return resp.text()
+            }).then(
+                text => {
+                    console.log(text)
+                    document.getElementById("result").innerHTML = text
+                }).catch(
+                    error => {
+                        console.log(error)
+                    });
+    }
+</script>
+</html>
