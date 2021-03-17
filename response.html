@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Knock Knock Jokes</title>
+</head>
+<body>
+    <h2>Nikhil Reddy Pannala jokes</h2>
+    <button onclick="buttonHandler()">Tell me a joke</button>
+    <div id="result" style="margin: 10px 0;">Result will be displayed here</div>
+</body>
+<script>
+    function buttonHandler(){
+        fetch(`http://127.0.0.1:3001/`).then(
+            resp => {
+                return resp.text()
+            }).then(
+                text => {
+                    console.log(text)
+                    document.getElementById("result").innerHTML = text
+                }).catch(
+                    error => {
+                        console.log(error)
+                    });
+    }
+</script>
+</html>
